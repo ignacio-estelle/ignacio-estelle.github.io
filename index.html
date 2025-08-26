@@ -3,7 +3,7 @@
 <head>
 <script src="https://kit.fontawesome.com/a14ae32021.js" crossorigin="anonymous"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>This one is for my Varchhu</title>
+<title>Pour ma chérie</title>
 
 <style type="text/css">
 @font-face {
@@ -23,44 +23,53 @@
 <div id="mainDiv">
 	<div id="content">
 		<div id="code">
+			<br>
 			<span class="comments">/**</span><br />
 			<span class="space"/><span class="comments">*THE CODE OF LOVE</span><br />
 			<span class="space"/><span class="comments">*/</span><br />
-			Hey Girl !<br />
-			Do you remember the day we first met?<br />
-			<span class="comments">// The ET-LAB Friday. </span><br />
-			Since that day a spark begun;<br />
-			<span class="comments">// Your face Your Voice Your Words.</span><br />
-			Your everything got imprinted in my heart;<br />
-			As the time went on;<br />
-			The Bond grew stronger and stronger;<br />
-			Journey from Infatuation to Love;<br />
-			We have traveled a long way together;<br />
-			There have been fights ;<br />
-			<span class="comments">// And I'm sure there will be more.</span><br />
-			But our Bond will always grow back Stronger;<br />
+			Coucou chou !<br />
 			<br>
+			Te acordas la primera vez que nos vimos?<br />
+			<span class="comments">// Viernes 31.01 en el Community Room. </span><br />
+			Desde ese dia sabia que algo habia entre nosotros;<br />
+			Tu luz, tu sonrisa, tu todo;<br />
+			Todo quedo grabado en mi corazon;<br />
 			<br>
-			All I want to say is:<br />
-			Baby, I will love you forever;<br />
+			Con el tiempo;<br />
+			Me fui 'realizando' que mi sentimiento era mas fuerte que una amistad;<br />
+			Me estaba enamorando de vos;<br />
 			<br>
+			Tanto tiempo guardamos el secreto;<br />
+			<span class="comments">// Vos mas que yo...</span><br />
+			Hasta que finalmente, nos dimos el primer beso;<br />
 			<br>
-			Now If you want to hug me you can touch the heart below<br />
+			Desde ese dia, todo fue magico;<br />
+			Sabiamos que iba a ser duro...;<br />
+			Pero aun asi, decidimos seguir adelante;<br />
+			<span class="comments">// Y ¥¥...</span><br />
+			<br>
+			Porque nuestro vinculo es unico,;<br />
+			especial,;<br />
+			y sobre todo,;<br />
+			PURO;<br />
+			Porque todo lo que hacemos, lo hacemos con el corazon;<br />
+			<br>
+			Todo lo que quiero decir es:<br />
+			<br>
+			Te amo ma chérie;<br />
+			<br>
+			Ahora, si queres que nos abracemos tenes que hacer click en el corazon<br />
 			<br>
 			<span id="heartspan">
-			<a href="image.jpg"><i class="fas fa-heart" id="icon"></i></a>
+			<a href="image.jpeg"><i class="fas fa-heart" id="icon"></i></a>
 			</span>
 		</div>
 		<div id="loveHeart">
 			<canvas id="garden"></canvas>
 			<div id="words">
 				<div id="messages">
-					वर्षा ऋतु FOREVER
+					Días para vernos
 					<div id="elapseClock"></div>
-				</div>
-				<div id="loveu">
-					I LOVE YOU SO MUCH<br/>
-					<div class="signature">- RITVIK</div>
 				</div>
 			</div>
 		</div>
@@ -70,35 +79,39 @@
 <script type="text/javascript">
 var offsetX = $("#loveHeart").width() / 2;
 var offsetY = $("#loveHeart").height() / 2 - 55;
-var together = new Date();
-together.setFullYear(2016, 8, 5);
-together.setHours(16);
-together.setMinutes(30);
-together.setSeconds(0);
-together.setMilliseconds(0);
 
+// Set your target date here
+var targetDate = new Date();
+console.log(targetDate);
+targetDate.setFullYear(2025, 8, 25);
+targetDate.setHours(7);
+targetDate.setMinutes(50);
+targetDate.setSeconds(0);
+targetDate.setMilliseconds(0);
+
+// Check for canvas support
 if (!document.createElement('canvas').getContext) {
-	var msg = document.createElement("div");
-	msg.id = "errorMsg";
-	msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
-	document.body.appendChild(msg);
-	$("#code").css("display", "none")
-	$("#copyright").css("position", "absolute");
-	$("#copyright").css("bottom", "10px");
-	document.execCommand("stop");
+    var msg = document.createElement("div");
+    msg.id = "errorMsg";
+    msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+    document.body.appendChild(msg);
+    $("#code").css("display", "none")
+    $("#copyright").css("position", "absolute");
+    $("#copyright").css("bottom", "10px");
+    document.execCommand("stop");
 } else {
-	setTimeout(function () {
+	$("#code").typewriter(function () {
+		// Start heart animation only after typing ends
 		startHeartAnimation();
-	}, 5000);
 
-	timeElapse(together);
-	setInterval(function () {
-		timeElapse(together);
-	}, 500);
-
-	adjustCodePosition();
-	$("#code").typewriter();
+		// Start the countdown
+		timeLeft(targetDate); // show immediately
+		setInterval(function () {
+			timeLeft(targetDate); // update every second
+		}, 1000);
+	});
 }
 </script>
+
 </body>
 </html>

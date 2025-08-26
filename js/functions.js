@@ -15,11 +15,6 @@ $(function () {
     gardenCtx = gardenCanvas.getContext("2d");
     gardenCtx.globalCompositeOperation = "lighter";
     garden = new Garden(gardenCtx, gardenCanvas);
-	
-	$("#content").css("width", $loveHeart.width() + $("#code").width());
-	$("#content").css("height", Math.max($loveHeart.height(), $("#code").height()));
-	$("#content").css("margin-top", Math.max(($window.height() - $("#content").height()) / 2, 10));
-	$("#content").css("margin-left", Math.max(($window.width() - $("#content").width()) / 2, 10));
 
     // renderLoop
     setInterval(function () {
@@ -67,29 +62,37 @@ function startHeartAnimation() {
 		} else {
 			angle += 0.2;
 		}
-	}, interval);
+	}, 0);
 }
 
-(function($) {
-	$.fn.typewriter = function() {
-		this.each(function() {
-			var $ele = $(this), str = $ele.html(), progress = 0;
-			$ele.html('');
-			var timer = setInterval(function() {
-				var current = str.substr(progress, 1);
-				if (current == '<') {
-					progress = str.indexOf('>', progress) + 1;
-				} else {
-					progress++;
-				}
-				$ele.html(str.substring(0, progress) + (progress & 1 ? '_' : ''));
-				if (progress >= str.length) {
-					clearInterval(timer);
-				}
-			}, 75);
-		});
-		return this;
-	};
+(function ($) {
+    $.fn.typewriter = function (callback) {
+        this.each(function () {
+            var $ele = $(this),
+                str = $ele.html(),
+                progress = 0;
+
+            $ele.html('');
+            var timer = setInterval(function () {
+                var current = str.substr(progress, 1);
+                if (current == '<') {
+                    progress = str.indexOf('>', progress) + 1;
+                } else {
+                    progress++;
+                }
+                $ele.html(str.substring(0, progress) + (progress & 1 ? '_' : ''));
+
+                if (progress >= str.length) {
+                    clearInterval(timer);
+                    $ele.html(str); // remove the blinking "_"
+                    if (typeof callback === "function") {
+                        callback(); // call after typing finishes
+                    }
+                }
+            }, 0);
+        });
+        return this;
+    };
 })(jQuery);
 
 function timeElapse(date){
@@ -110,8 +113,32 @@ function timeElapse(date){
 	if (seconds < 10) {
 		seconds = "0" + seconds;
 	}
-	var result = "<span class=\"digit\">" + days + "</span> days <span class=\"digit\">" + hours + "</span> hours <span class=\"digit\">" + minutes + "</span> minutes <span class=\"digit\">" + seconds + "</span> seconds"; 
+	var result = "<span class=\"digit\">" + days + "</span> d <span class=\"digit\">" + hours + "</span> h <span class=\"digit\">" + minutes + "</span> m <span class=\"digit\">" + seconds + "</span> s"; 
 	$("#elapseClock").html(result);
+}
+
+function timeLeft(target) {
+    var now = new Date();
+    var seconds = Math.floor((target - now) / 1000);
+
+    if (seconds < 0) {
+        $("#elapseClock").html("Time's up!");
+        return;
+    }
+    var days = Math.floor(seconds / (3600 * 24));
+    seconds %= 3600 * 24;
+
+    var hours = Math.floor(seconds / 3600);
+    hours = hours < 10 ? "0" + hours : hours;
+    seconds %= 3600;
+
+    var minutes = Math.floor(seconds / 60);
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds %= 60;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    var result = `<span class="digit">${days}</span> d <span class="digit">${hours}</span> h <span class="digit">${minutes}</span> m <span class="digit">${seconds}</span> s`; 
+    $("#elapseClock").html(result);
 }
 
 function showMessages() {
@@ -125,10 +152,6 @@ function adjustWordsPosition() {
 	$('#words').css("position", "absolute");
 	$('#words').css("top", $("#garden").position().top + 195);
 	$('#words').css("left", $("#garden").position().left + 70);
-}
-
-function adjustCodePosition() {
-	$('#code').css("margin-top", ($("#garden").height() - $("#code").height()) / 2);
 }
 
 function showLoveU() {
