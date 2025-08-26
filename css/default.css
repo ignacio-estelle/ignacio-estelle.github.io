@@ -25,7 +25,7 @@
 	justify-content: center;
 	float: left;
 	width: auto;
-	height: 625px;
+	height: auto;
 }
 
 #garden {
@@ -53,16 +53,16 @@
 #messages {
 	display: none;
 	text-align: center;
-	font-size: 70px
+	font-size: 30px
 }
 
 #elapseClock {
-	font-size: 50px;
+	font-size: 30px;
 }
 
 #elapseClock .digit {
 	font-family: "digit";
-	font-size: 100px;
+	font-size: 24px;
 	text-align: center;
 }
 
@@ -91,7 +91,7 @@
 	height: 100%;
 	color: #333;
 	font-family: "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", "sans-serif";
-	font-size: 4em;
+	font-size: 24px;
 }
 
 #code .string {
@@ -166,6 +166,8 @@
 	}
 
 	#loveHeart {
+		margin-top: 40px;
+		margin-bottom: 40px;
 		height: auto;
 	}
 }

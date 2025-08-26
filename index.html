@@ -3,6 +3,7 @@
 <head>
 <script src="https://kit.fontawesome.com/a14ae32021.js" crossorigin="anonymous"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pour ma chérie</title>
 
 <style type="text/css">
@@ -13,7 +14,6 @@
 </style>
 <link href="css/default.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/garden.js"></script>
 <script type="text/javascript" src="js/functions.js"></script>
 
 </head>
@@ -23,49 +23,48 @@
 <div id="mainDiv">
 	<div id="content">
 		<div id="code">
-			<br>
-			<span class="comments">/**</span><br />
-			<span class="space"/><span class="comments">*THE CODE OF LOVE</span><br />
-			<span class="space"/><span class="comments">*/</span><br />
-			Coucou chou !<br />
-			<br>
-			Te acordas la primera vez que nos vimos?<br />
-			<span class="comments">// Viernes 31.01 en el Community Room. </span><br />
-			Desde ese dia sabia que algo habia entre nosotros;<br />
-			Tu luz, tu sonrisa, tu todo;<br />
-			Todo quedo grabado en mi corazon;<br />
-			<br>
-			Con el tiempo;<br />
-			Me fui 'realizando' que mi sentimiento era mas fuerte que una amistad;<br />
-			Me estaba enamorando de vos;<br />
-			<br>
-			Tanto tiempo guardamos el secreto;<br />
-			<span class="comments">// Vos mas que yo...</span><br />
-			Hasta que finalmente, nos dimos el primer beso;<br />
-			<br>
-			Desde ese dia, todo fue magico;<br />
-			Sabiamos que iba a ser duro...;<br />
-			Pero aun asi, decidimos seguir adelante;<br />
-			<span class="comments">// Y ¥¥...</span><br />
-			<br>
-			Porque nuestro vinculo es unico,;<br />
-			especial,;<br />
-			y sobre todo,;<br />
-			PURO;<br />
-			Porque todo lo que hacemos, lo hacemos con el corazon;<br />
-			<br>
-			Todo lo que quiero decir es:<br />
-			<br>
-			Te amo ma chérie;<br />
-			<br>
-			Ahora, si queres que nos abracemos tenes que hacer click en el corazon<br />
-			<br>
-			<span id="heartspan">
+		<br>
+		<span class="comments">/**</span><br />
+		<span class="space"/><span class="comments">* THE CODE OF LOVE</span><br />
+		<span class="space"/><span class="comments">*/</span><br />
+		
+		Coucou chou!<br /><br />
+		
+		¿Te acordás de la primera vez que nos vimos?<br />
+		<span class="comments">// Viernes 31.01 en el Community Room</span><br />
+		Desde ese día supe que algo especial existía entre nosotros;<br />
+		Tu luz, tu sonrisa, tu todo;<br />
+		Todo quedó grabado en mi corazón;<br /><br />
+		
+		Con el tiempo;<br />
+		Me fui dando cuenta de que mis sentimientos eran más que una amistad;<br />
+		Me estaba enamorando de vos;<br /><br />
+		
+		Tanto tiempo guardamos el secreto;<br />
+		<span class="comments">// Vos más que yo...</span><br />
+		Hasta que finalmente nos dimos nuestro primer beso;<br /><br />
+		
+		Desde ese día, todo fue mágico;<br />
+		Sabíamos que iba a ser difícil...;<br />
+		Pero aun así, decidimos seguir adelante;<br />
+		<span class="comments">// Y ¥¥...</span><br /><br />
+		
+		Porque nuestro vínculo es único;<br />
+		Especial;<br />
+		Y, sobre todo;<br />
+		PURO;<br />
+		Porque todo lo que hacemos, lo hacemos con el corazón;<br /><br />
+		
+		Todo lo que quiero decir es:<br /><br />
+		Te amo, ma chérie;<br /><br />
+		
+		Ahora, si querés que nos abracemos, tenés que hacer click en el corazón<br /><br />
+		
+		<span id="heartspan">
 			<a href="image.jpeg"><i class="fas fa-heart" id="icon"></i></a>
-			</span>
+		</span>
 		</div>
 		<div id="loveHeart">
-			<canvas id="garden"></canvas>
 			<div id="words">
 				<div id="messages">
 					Días para vernos
@@ -102,8 +101,7 @@ if (!document.createElement('canvas').getContext) {
 } else {
 	$("#code").typewriter(function () {
 		// Start heart animation only after typing ends
-		startHeartAnimation();
-
+		showMessages();
 		// Start the countdown
 		timeLeft(targetDate); // show immediately
 		setInterval(function () {
