@@ -1,6 +1,6 @@
 ﻿// Dates: Sept 25 → Oct 28
 const start = new Date(2024, 8, 25);
-const end   = new Date(2024, 9, 28);
+const end   = new Date(2024, 10, 2);
 
 const calendar = document.getElementById('calendar');
 let dayNumber = 1;
