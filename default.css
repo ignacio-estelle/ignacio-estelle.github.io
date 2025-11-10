@@ -108,3 +108,19 @@ h1 {
   visibility: visible;
   opacity: 1;
 }
+
+.countdown {
+  text-align: center;
+  font-family: "Domine", serif;
+  margin-top: 40px;
+  color: #333;
+}
+
+.countdown h2 {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.countdown p {
+  font-size: 1.2rem;
+}
